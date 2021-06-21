@@ -1,2 +1,2 @@
-# lsd-junit5
-junit5 extension for generating lsd reports. (living sequencce diagrams)
+# lsd-cucumber
+Cucumber plugin for generating lsd reports. (living sequencce diagrams)

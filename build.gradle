@@ -6,7 +6,7 @@ plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.13.2'
 }
 
-group = 'com.lsd-consulting'
+group = 'io.github.lsd-consulting'
 
 sourceCompatibility = '11'
 
@@ -63,11 +63,11 @@ publishing {
             pom {
                 name = 'lsd-cucumber'
                 description = 'A library providing a Cucumber plugin for generating LSD reports'
-                url = 'https://github.com/lsd-consulting/lsd-junit5.git'
+                url = 'https://github.com/lsd-consulting/lsd-cucumber.git'
                 licenses {
                     license {
                         name = "MIT License"
-                        url = "https://raw.githubusercontent.com/nickmcdowall/lsd-junit5/main/LICENSE.txt"
+                        url = "https://github.com/lsd-consulting/lsd-cucumber/blob/main/LICENSE"
                         distribution = "repo"
                     }
                 }
@@ -92,7 +92,7 @@ publishing {
             repositories {
                 maven {
                     name = 'sonatype'
-                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
                     credentials(PasswordCredentials)
                 }
             }
@@ -103,10 +103,12 @@ publishing {
 nexusPublishing {
     repositories {
         sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }
 
-//signing {
-//    sign publishing.publications.mavenJava
-//}
+signing {
+    sign publishing.publications.mavenJava
+}
