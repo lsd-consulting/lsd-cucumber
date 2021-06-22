@@ -1,13 +1,11 @@
 package lsd.cucumber;
 
 import com.lsd.LsdContext;
-import com.lsd.OutcomeStatus;
 import io.cucumber.plugin.EventListener;
 import io.cucumber.plugin.event.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.lsd.OutcomeStatus.ERROR;
 import static com.lsd.OutcomeStatus.SUCCESS;
@@ -24,42 +22,41 @@ public class LsdCucumberPlugin implements EventListener {
 
     @Override
     public void setEventPublisher(EventPublisher publisher) {
-        publisher.registerHandlerFor(TestCaseStarted.class,
-                this::handleTestCaseStarted);
+        publisher.registerHandlerFor(TestCaseStarted.class, this::handleTestCaseStarted);
 
-        publisher.registerHandlerFor(TestCaseFinished.class, e -> {
-            System.out.println("Finished featureName=" + featureName + ", currentTestScenarioName=" + scenarioName);
-            testCaseFinishedEvents.add(e);
-        });
+        publisher.registerHandlerFor(TestCaseFinished.class, testCaseFinishedEvents::add);
 
-        publisher.registerHandlerFor(TestRunFinished.class, event -> {
-            finishProcessingCompletedScenario();
-            lsdContext.completeReport(featureName);
-            lsdContext.createIndex();
-        });
+        publisher.registerHandlerFor(TestRunFinished.class, this::handleTestRunFinished);
     }
 
     private void handleTestCaseStarted(TestCaseStarted event) {
         TestCase testCase = event.getTestCase();
-        String currentFeatureName = testCase.getUri().toString().replaceAll(".*/(.*?).feature$", "$1");
+        String currentFeatureName = retrieveFeatureName(testCase);
         String currentScenarioName = testCase.getName();
         if (isVeryFirstRun()) {
-            scenarioName = currentScenarioName;
-            featureName = currentFeatureName;
+            prepareFirstScenario(currentFeatureName, currentScenarioName);
         } else if (!continuationOfExistingScenario(currentScenarioName)) {
             finishProcessingCompletedScenario();
-            if (featureName != null && !currentFeatureName.equalsIgnoreCase(featureName)) {
-                lsdContext.completeReport(featureName);
-            }
+            finishProcessingCompletedFeature(currentFeatureName);
             prepareForNewScenario(currentScenarioName, currentFeatureName);
         } else {
-            // TODO This doesn't seem to ever happen
+            finishProcessingCompletedScenario();
+            prepareForNewScenario(currentScenarioName, currentFeatureName);
         }
     }
 
-    private void prepareForNewScenario(String testScenarioName, String currentFeatureName) {
+    private String retrieveFeatureName(TestCase testCase) {
+        return testCase.getUri().toString().replaceAll(".*/(.*?).feature$", "$1");
+    }
+
+    private void prepareFirstScenario(String currentFeatureName, String currentScenarioName) {
+        scenarioName = currentScenarioName;
+        featureName = currentFeatureName;
+    }
+
+    private void prepareForNewScenario(String currentScenarioName, String currentFeatureName) {
         testCaseFinishedEvents.clear();
-        scenarioName = testScenarioName;
+        scenarioName = currentScenarioName;
         featureName = currentFeatureName;
     }
 
@@ -82,11 +79,23 @@ public class LsdCucumberPlugin implements EventListener {
         lsdContext.completeScenario(scenarioName, description, result);
     }
 
+    private void finishProcessingCompletedFeature(String currentFeatureName) {
+        if (featureName != null && !currentFeatureName.equalsIgnoreCase(featureName)) {
+            lsdContext.completeReport(featureName);
+        }
+    }
+
     private boolean continuationOfExistingScenario(String testScenarioName) {
         return testScenarioName.equals(scenarioName);
     }
 
     private boolean isVeryFirstRun() {
         return null == scenarioName;
+    }
+
+    private void handleTestRunFinished(TestRunFinished event) {
+        finishProcessingCompletedScenario();
+        lsdContext.completeReport(featureName);
+        lsdContext.createIndex();
     }
 }
