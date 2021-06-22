@@ -16,12 +16,12 @@ repositories {
 
 dependencies {
     api 'com.github.nickmcdowall:lsd-core:0.1.15'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
     implementation 'com.j2html:j2html:1.4.0'
-    implementation "io.cucumber:cucumber-spring:6.9.1"
+    implementation "io.cucumber:cucumber-spring:6.10.4"
 
-    testImplementation 'org.assertj:assertj-core:3.15.0'
+    testImplementation 'org.assertj:assertj-core:3.20.2'
     testImplementation 'com.approvaltests:approvaltests:11.4.0'
     testImplementation 'org.mockito:mockito-all:1.10.19'
 }
@@ -62,7 +62,7 @@ publishing {
             artifact javadocJar
             pom {
                 name = 'lsd-cucumber'
-                description = 'A library providing a Cucumber plugin for generating LSD reports'
+                description = 'A library providing a Cucumber plugin for including Cucumber scenarios in the LSD reports.'
                 url = 'https://github.com/lsd-consulting/lsd-cucumber.git'
                 licenses {
                     license {
@@ -82,7 +82,7 @@ publishing {
                         name = "Lukasz"
                         email = "lukasz.gryzbon@gmail.com"
                         organization = 'Integreety Ltd.'
-                        organizationUrl = 'https://github.com/integreety'
+                        organizationUrl = 'https://www.integreety.co.uk'
                     }
                 }
                 scm {
