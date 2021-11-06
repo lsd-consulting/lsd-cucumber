@@ -18,7 +18,7 @@ dependencies {
     api 'io.github.lsd-consulting:lsd-core:0.1.33'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-    implementation 'com.j2html:j2html:1.4.0'
+    implementation 'com.j2html:j2html:1.5.0'
     implementation "io.cucumber:cucumber-spring:6.10.4"
 
     testImplementation 'org.assertj:assertj-core:3.20.2'
