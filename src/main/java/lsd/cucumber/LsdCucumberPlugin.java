@@ -6,6 +6,9 @@ import io.cucumber.plugin.event.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.lsd.OutcomeStatus.ERROR;
 import static com.lsd.OutcomeStatus.SUCCESS;
@@ -20,6 +23,8 @@ public class LsdCucumberPlugin implements EventListener {
     private String scenarioName;
     private String featureName;
 
+    private final Map<String, Integer> outlineScenarioNames = new ConcurrentHashMap<>();
+
     @Override
     public void setEventPublisher(EventPublisher publisher) {
         publisher.registerHandlerFor(TestCaseStarted.class, this::handleTestCaseStarted);
@@ -32,7 +37,7 @@ public class LsdCucumberPlugin implements EventListener {
     private void handleTestCaseStarted(TestCaseStarted event) {
         TestCase testCase = event.getTestCase();
         String currentFeatureName = retrieveFeatureName(testCase);
-        String currentScenarioName = testCase.getName();
+        String currentScenarioName = getScenarioName(testCase);
         if (isVeryFirstRun()) {
             prepareFirstScenario(currentFeatureName, currentScenarioName);
         } else if (!continuationOfExistingScenario(currentScenarioName)) {
@@ -43,6 +48,15 @@ public class LsdCucumberPlugin implements EventListener {
             finishProcessingCompletedScenario();
             prepareForNewScenario(currentScenarioName, currentFeatureName);
         }
+    }
+
+    private String getScenarioName(TestCase testCase) {
+        if (testCase.getKeyword().equalsIgnoreCase("Scenario Outline")) {
+            Integer index = Optional.ofNullable(outlineScenarioNames.get(testCase.getName())).orElse(0);
+            outlineScenarioNames.put(testCase.getName(), index);
+            return testCase.getName() + " #" + ++index;
+        }
+        return testCase.getName();
     }
 
     private String retrieveFeatureName(TestCase testCase) {
