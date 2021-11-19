@@ -53,8 +53,8 @@ public class LsdCucumberPlugin implements EventListener {
     private String getScenarioName(TestCase testCase) {
         if (testCase.getKeyword().equalsIgnoreCase("Scenario Outline")) {
             Integer index = Optional.ofNullable(outlineScenarioNames.get(testCase.getName())).orElse(0);
-            outlineScenarioNames.put(testCase.getName(), index);
-            return testCase.getName() + " #" + ++index;
+            outlineScenarioNames.put(testCase.getName(), ++index);
+            return testCase.getName() + " #" + index;
         }
         return testCase.getName();
     }
