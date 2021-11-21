@@ -19,11 +19,13 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'com.j2html:j2html:1.5.0'
-    implementation "io.cucumber:cucumber-spring:6.10.4"
+    implementation 'io.cucumber:cucumber-plugin:6.10.4'
 
     testImplementation 'org.assertj:assertj-core:3.21.0'
-    testImplementation 'com.approvaltests:approvaltests:12.1.1'
+    testImplementation 'com.approvaltests:approvaltests:12.2.0'
     testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'io.cucumber:cucumber-java8:6.10.4'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:6.10.4'
 }
 
 test {
