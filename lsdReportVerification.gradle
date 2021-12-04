@@ -1,0 +1,31 @@
+
+sourceSets {
+    lsdReportVerification {
+        java.srcDir "$projectDir/src/lsdReportVerification/java"
+        resources.srcDir "$projectDir/src/lsdReportVerification/resources"
+    }
+}
+
+task lsdReportVerification(type: Test) {
+    testClassesDirs = sourceSets.lsdReportVerification.output.classesDirs
+    classpath = sourceSets.lsdReportVerification.runtimeClasspath
+}
+
+lsdReportVerification.dependsOn test
+check.dependsOn lsdReportVerification
+
+lsdReportVerification {
+    useJUnitPlatform()
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+}
+
+dependencies {
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    lsdReportVerificationImplementation 'org.assertj:assertj-core:3.21.0'
+    lsdReportVerificationImplementation 'org.mockito:mockito-all:1.10.19'
+    lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.17.0'
+}
