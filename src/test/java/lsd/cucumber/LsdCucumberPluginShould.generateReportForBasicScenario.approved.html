@@ -12,16 +12,22 @@
     <div class="contents">
         <h3>Contents</h3>
         <ul class="contents">
-                        <li class="success"><a href="#4">Basic scenario</a></li>
-                    </ul>
+            
+            <li class="success"><a href="#4">Basic scenario</a></li>
+            
+        </ul>
     </div>
     
+
     <article id="4">
         <span onclick="location.href='#top';" title="top of page" class="back_to_top"></span>
         <h2 class="success">Basic scenario</h2>
         <section class="description success">
             <h3 class="success">Description</h3>
-            Given  given1</br>When  when1</br>Then  then1        </section>
+            Given  given1</br>When  when1</br>Then  then1
+        </section>
+        
+        
         <section class="sequence diagram svg success">
             <h3 class="success">Sequence Diagram</h3>
             <pre><?xml version="1.0" encoding="UTF-8"?>
@@ -61,14 +67,20 @@
                         <pre><code id="sequence_uml_code5">@startuml
 
 !theme plain
+
 skinparam backgroundColor transparent
 
 hide unlinked
 
 
 
-Source -&gt; Destination: &lt;text fill=&quot;&quot;&gt;[[#id1 {label1} label1]]&lt;/text&gt;
-Destination -&gt; Source: &lt;text fill=&quot;&quot;&gt;[[#id2 {label2} label2]]&lt;/text&gt;
+
+
+
+Source -&gt; Destination: &lt;text fill&#x3D;&quot;&quot;&gt;[[#id1 {label1} label1]]&lt;/text&gt;
+
+Destination -&gt; Source: &lt;text fill&#x3D;&quot;&quot;&gt;[[#id2 {label2} label2]]&lt;/text&gt;
+
 
 @enduml</code></pre>
                     </div>
@@ -119,8 +131,10 @@ Destination -&gt; Source: &lt;text fill=&quot;&quot;&gt;[[#id2 {label2} label2]]
 skinparam backgroundColor transparent
 
 
+
 [source] --&gt; destination
 [destination] --&gt; source
+
 
 remove @unlinked
 @enduml</code></pre>
@@ -128,7 +142,8 @@ remove @unlinked
             </div>
         </div>
         <!-- Section containing data for sequence diagram popups -->
-                <div onclick="location.href='#!';" id="id1" class="overlay">
+        
+        <div onclick="location.href='#!';" id="id1" class="overlay">
             <div class="popup" onclick="event.stopPropagation();">
                 <h2>label1</h2>
                 <a class="close" href="#!">&times;</a>
@@ -137,7 +152,8 @@ remove @unlinked
                 </div>
             </div>
         </div>
-                <div onclick="location.href='#!';" id="id2" class="overlay">
+        
+        <div onclick="location.href='#!';" id="id2" class="overlay">
             <div class="popup" onclick="event.stopPropagation();">
                 <h2>label2</h2>
                 <a class="close" href="#!">&times;</a>
@@ -146,8 +162,11 @@ remove @unlinked
                 </div>
             </div>
         </div>
-                    </article>
-    </main>
+        
+        
+    </article>
+    
+</main>
 </body>
 <footer>
     <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
@@ -162,7 +181,10 @@ remove @unlinked
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
     <script>
         highlightKeywords();
-                unMarkSvg();
+        
+            
+        
+        unMarkSvg();
     </script>
 </footer>
 </html>
