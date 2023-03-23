@@ -1,4 +1,4 @@
-package lsd.cucumber;
+package lsd.cucumber.report.verify;
 
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
