@@ -3,6 +3,7 @@ package lsd.cucumber;
 import com.lsd.LsdContext;
 import io.cucumber.plugin.EventListener;
 import io.cucumber.plugin.event.*;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,8 +109,10 @@ public class LsdCucumberPlugin implements EventListener {
     }
 
     private void handleTestRunFinished(TestRunFinished event) {
-        finishProcessingCompletedScenario();
-        lsdContext.completeReport(featureName);
-        lsdContext.createIndex();
+        if (!StringUtils.isBlank(featureName)) {
+            finishProcessingCompletedScenario();
+            lsdContext.completeReport(featureName);
+            lsdContext.createIndex();
+        }
     }
 }
