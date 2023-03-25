@@ -1,6 +1,6 @@
 package lsd.cucumber;
 
-import com.lsd.LsdContext;
+import com.lsd.core.LsdContext;
 import io.cucumber.plugin.EventListener;
 import io.cucumber.plugin.event.*;
 import org.junit.platform.commons.util.StringUtils;
@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.lsd.OutcomeStatus.ERROR;
-import static com.lsd.OutcomeStatus.SUCCESS;
 import static io.cucumber.plugin.event.Status.FAILED;
 import static java.util.stream.Collectors.joining;
 
@@ -88,8 +86,8 @@ public class LsdCucumberPlugin implements EventListener {
                 .map(TestCaseFinished::getResult)
                 .filter(testResult -> testResult.getStatus().is(FAILED))
                 .findFirst()
-                .map(x -> ERROR)
-                .orElse(SUCCESS);
+                .map(x -> com.lsd.core.domain.Status.ERROR)
+                .orElse(com.lsd.core.domain.Status.SUCCESS);
 
         lsdContext.completeScenario(scenarioName, description, result);
     }

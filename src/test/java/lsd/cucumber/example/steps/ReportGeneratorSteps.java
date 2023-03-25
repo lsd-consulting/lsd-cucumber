@@ -1,9 +1,10 @@
 package lsd.cucumber.example.steps;
 
-import com.lsd.LsdContext;
-import com.lsd.events.Message;
+import com.lsd.core.LsdContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
+
+import static com.lsd.core.builders.MessageBuilder.messageBuilder;
 
 public class ReportGeneratorSteps implements En {
 
@@ -12,8 +13,8 @@ public class ReportGeneratorSteps implements En {
     public ReportGeneratorSteps() {
 
         Given("^given1$", () -> {
-            lsdContext.capture(Message.builder().from("source").to("destination").id("id1").label("label1").build());
-            lsdContext.capture(Message.builder().from("destination").to("source").id("id2").label("label2").build());
+            lsdContext.capture(messageBuilder().from("source").to("destination").id("id1").label("label1").build());
+            lsdContext.capture(messageBuilder().from("destination").to("source").id("id2").label("label2").build());
         });
         When("^when1$", () -> {
         });
@@ -21,8 +22,8 @@ public class ReportGeneratorSteps implements En {
         });
 
         Given("^given2$", (DataTable param1) -> {
-            lsdContext.capture(Message.builder().from("source").to("destination").id("id1").label("label1").build());
-            lsdContext.capture(Message.builder().from("destination").to("source").id("id2").label("label2").build());
+            lsdContext.capture(messageBuilder().from("source").to("destination").id("id1").label("label1").build());
+            lsdContext.capture(messageBuilder().from("destination").to("source").id("id2").label("label2").build());
         });
         When("^when2$", () -> {
         });
@@ -30,8 +31,8 @@ public class ReportGeneratorSteps implements En {
         });
 
         Given("^the following values for (.*?) and (.*?)$", (String column1, String column2) -> {
-            lsdContext.capture(Message.builder().from("source").to("destination").id("id1").label("label1").build());
-            lsdContext.capture(Message.builder().from("destination").to("source").id("id2").label("label2").build());
+            lsdContext.capture(messageBuilder().from("source").to("destination").id("id1").label("label1").build());
+            lsdContext.capture(messageBuilder().from("destination").to("source").id("id2").label("label2").build());
         });
         When("^when3$", () -> {
         });
