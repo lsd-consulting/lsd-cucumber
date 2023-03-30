@@ -111,6 +111,7 @@ public class LsdCucumberPlugin implements EventListener {
             finishProcessingCompletedScenario();
             lsdContext.completeReport(featureName);
             lsdContext.createIndex();
+            lsdContext.completeComponentsReport("Combined Component Diagram");
         }
     }
 }
