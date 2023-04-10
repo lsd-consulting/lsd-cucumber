@@ -28,5 +28,5 @@ dependencies {
     lsdReportVerificationImplementation 'org.assertj:assertj-core:3.21.0'
     lsdReportVerificationImplementation 'org.mockito:mockito-all:1.10.19'
     lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.17.0'
-    lsdReportVerificationImplementation 'com.approvaltests:approvaltests:14.0.0'
+    lsdReportVerificationImplementation 'com.approvaltests:approvaltests:18.6.0'
 }
