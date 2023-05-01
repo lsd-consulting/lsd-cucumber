@@ -2,20 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
 <head>
     <title>scenario_outline</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/style.min.css">
 </head>
 <body>
 <main role="main">
-    <h1 class="logo">LSD</h1>
-    <h1>scenario_outline</h1>
-    <div class="dropdown">
-        <label class="dropdown">Scenarios</label>
-        <div class="dropdown-content">
-            <a class="success" href="#7">Scenario with a data table #1</a>
-            <a class="success" href="#10">Scenario with a data table #2</a>
+    <div class="menu">
+            <div class="dropdown">
+                <label class="dropdown">Scenarios</label>
+                <div class="dropdown-content">
+                        <a class="success" href="#7">Scenario with a data table #1</a>
+                        <a class="success" href="#10">Scenario with a data table #2</a>
+                </div>
+            </div>
         </div>
-    </div><article id="7">
-        <span onclick="location.href='#top';" title="top of page" class="back_to_top"></span>
+    <h1 class="logo">LSD</h1>
+    <h1>scenario_outline</h1><article id="7">
+        <span class="articleStart"></span>
         <h2 class="success">Scenario with a data table #1</h2><section class="description success">
             <h3 class="success">Description</h3>
             Given  the following values for value1_1 and value1_2</br>When  when3</br>Then  then3
@@ -32,7 +34,7 @@
                     <div class="content">
                         <pre><code id="sequence_uml_code8">@startuml
 
-!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/
+!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/
 
 hide unlinked
 
@@ -111,7 +113,7 @@ remove @unlinked
             </div>
         </div>
     </article><article id="10">
-        <span onclick="location.href='#top';" title="top of page" class="back_to_top"></span>
+        <span class="articleStart"></span>
         <h2 class="success">Scenario with a data table #2</h2><section class="description success">
             <h3 class="success">Description</h3>
             Given  the following values for value2_1 and value2_2</br>When  when3</br>Then  then3
@@ -128,7 +130,7 @@ remove @unlinked
                     <div class="content">
                         <pre><code id="sequence_uml_code11">@startuml
 
-!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/
+!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/
 
 hide unlinked
 
@@ -210,9 +212,9 @@ remove @unlinked
 </main>
 </body>
 <footer>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/dark.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/custom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/custom.min.js"></script>
     <script>
         addSliderForSvgZoom();
         highlightLifelinesWhenClicked();
