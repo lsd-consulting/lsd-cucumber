@@ -1,7 +1,9 @@
 package lsd.cucumber;
 
 import com.lsd.core.LsdContext;
-import io.cucumber.plugin.EventListener;
+import com.lsd.core.domain.Newpage;
+import com.lsd.core.domain.PageTitle;
+import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.*;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -14,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static io.cucumber.plugin.event.Status.FAILED;
 import static java.util.stream.Collectors.joining;
 
-public class LsdCucumberPlugin implements EventListener {
+public class LsdCucumberPlugin implements ConcurrentEventListener {
 
     private final LsdContext lsdContext = LsdContext.getInstance();
 
@@ -27,10 +29,20 @@ public class LsdCucumberPlugin implements EventListener {
     @Override
     public void setEventPublisher(EventPublisher publisher) {
         publisher.registerHandlerFor(TestCaseStarted.class, this::handleTestCaseStarted);
-
+        publisher.registerHandlerFor(TestStepStarted.class, this::handleTestStepStarted);
         publisher.registerHandlerFor(TestCaseFinished.class, testCaseFinishedEvents::add);
-
         publisher.registerHandlerFor(TestRunFinished.class, this::handleTestRunFinished);
+    }
+
+    private void handleTestStepStarted(TestStepStarted testStepStarted) {
+        var testStep = testStepStarted.getTestStep();
+        if (testStep instanceof PickleStepTestStep) {
+            var pickleTestStep = (PickleStepTestStep) testStep;
+            var step = pickleTestStep.getStep();
+            var stepText = step.getText();
+            var stepKeyword = step.getKeyword();
+            lsdContext.capture(new Newpage(new PageTitle(stepKeyword + stepText)));
+        }
     }
 
     private void handleTestCaseStarted(TestCaseStarted event) {

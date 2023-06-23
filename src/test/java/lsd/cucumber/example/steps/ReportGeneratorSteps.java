@@ -21,11 +21,13 @@ public class ReportGeneratorSteps implements En {
         Then("^then1$", () -> {
         });
 
-        Given("^given2$", (DataTable param1) -> {
-            lsdContext.capture(messageBuilder().from("source").to("destination").id("id1").label("label1").build());
-            lsdContext.capture(messageBuilder().from("destination").to("source").id("id2").label("label2").build());
+        Given("^given2$", (DataTable param) -> {
+            lsdContext.capture(messageBuilder().from("source").to("destination").id("id1").label("with params").data(param).build());
+            lsdContext.capture(messageBuilder().from("destination").to("source").id("id2").label("ok").build());
         });
         When("^when2$", () -> {
+            lsdContext.capture(messageBuilder().from("source").to("destination").id("id3").label("label3").build());
+            lsdContext.capture(messageBuilder().from("destination").to("source").id("id4").label("label4").build());
         });
         Then("^then2$", () -> {
         });
