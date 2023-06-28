@@ -1,6 +1,7 @@
 package lsd.cucumber;
 
 import com.lsd.core.LsdContext;
+import com.lsd.core.ReportOptions;
 import com.lsd.core.domain.Newpage;
 import com.lsd.core.domain.PageTitle;
 import io.cucumber.plugin.ConcurrentEventListener;
@@ -19,11 +20,10 @@ import static java.util.stream.Collectors.joining;
 public class LsdCucumberPlugin implements ConcurrentEventListener {
 
     private final LsdContext lsdContext = LsdContext.getInstance();
-
     private final List<TestCaseFinished> testCaseFinishedEvents = new ArrayList<>();
     private String scenarioName;
     private String featureName;
-
+    private final ReportOptions options = new ReportOptions();
     private final Map<String, Integer> outlineScenarioNames = new ConcurrentHashMap<>();
 
     @Override
@@ -122,7 +122,7 @@ public class LsdCucumberPlugin implements ConcurrentEventListener {
         if (!StringUtils.isBlank(featureName)) {
             finishProcessingCompletedScenario();
             lsdContext.completeReport(featureName);
-            lsdContext.createIndex();
+            lsdContext.createIndex(options.getDevMode());
             lsdContext.completeComponentsReport("Combined Component Diagram");
         }
     }
