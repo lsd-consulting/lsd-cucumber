@@ -1,7 +1,10 @@
 [![semantic-release](https://img.shields.io/badge/semantic-release-e10079.svg?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 # lsd-cucumber
-Cucumber plugin for including Cucumber scenarios in the LSD (living sequence diagrams) reports. 
+Cucumber plugin for [lsd-core](https://github.com/lsd-consulting/lsd-core) (living sequence diagrams) reports.
+
+Example project: 
+* [lsd-kotlin-cucumber-example](https://github.com/lsd-consulting/lsd-kotlin-cucumber-example)
 
 [![CI](https://github.com/lsd-consulting/lsd-cucumber/actions/workflows/ci.yml/badge.svg)](https://github.com/lsd-consulting/lsd-cucumber/actions/workflows/ci.yml)
 [![Nightly Build](https://github.com/lsd-consulting/lsd-cucumber/actions/workflows/nightly.yml/badge.svg)](https://github.com/lsd-consulting/lsd-cucumber/actions/workflows/nightly.yml)
