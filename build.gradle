@@ -1,5 +1,6 @@
 plugins {
-    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20'
+    id("org.jetbrains.dokka") version "1.8.20"
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
@@ -13,11 +14,13 @@ apply from: 'lsdReportVerification.gradle'
 group = 'io.github.lsd-consulting'
 version = gitVersion().replaceAll("^v", "")
 
-sourceCompatibility = '11'
-
 repositories {
     mavenLocal()
     mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 dependencies {
@@ -31,7 +34,8 @@ dependencies {
     testImplementation 'com.approvaltests:approvaltests:18.6.0'
     testImplementation 'org.mockito:mockito-core:5.4.0'
     testImplementation 'io.cucumber:cucumber-java8:7.12.1'
-    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.2.3'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.12.1'
+    testImplementation 'org.junit.platform:junit-platform-suite-engine:1.9.3'
 }
 
 jacocoTestReport {
@@ -51,14 +55,14 @@ test {
     finalizedBy jacocoTestReport
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
-    from sourceSets.main.allSource
+java {
+    withSourcesJar()
 }
 
-task javadocJar(type: Jar) {
+tasks.register('javadocJar', Jar) {
+    dependsOn(dokkaJavadoc)
     archiveClassifier = 'javadoc'
-    from javadoc
+    from dokkaHtml.outputDirectory
 }
 
 artifacts {
@@ -74,7 +78,7 @@ publishing {
             artifactId = 'lsd-cucumber'
             version = "${version}"
 
-            from components.java
+            from components.kotlin
             artifact sourcesJar
             artifact javadocJar
             pom {
