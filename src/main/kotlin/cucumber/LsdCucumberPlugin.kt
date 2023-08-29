@@ -6,6 +6,7 @@ import com.lsd.core.domain.Newpage
 import com.lsd.core.domain.PageTitle
 import com.lsd.core.domain.Status.ERROR
 import com.lsd.core.domain.Status.SUCCESS
+import com.lsd.core.properties.LsdProperties.getBoolean
 import io.cucumber.plugin.ConcurrentEventListener
 import io.cucumber.plugin.event.*
 import io.cucumber.plugin.event.Status.FAILED
@@ -19,8 +20,10 @@ class LsdCucumberPlugin : ConcurrentEventListener {
 
     private var scenarioName: String? = null
     private var featureName: String? = null
+    private var splitByStep: Boolean = false
 
     override fun setEventPublisher(publisher: EventPublisher) {
+        splitByStep = getBoolean("lsd.cucumber.splitBySteps")
         publisher.registerHandlerFor(TestCaseStarted::class.java, ::handleTestCaseStarted)
         publisher.registerHandlerFor(TestStepStarted::class.java, ::handleTestStepStarted)
         publisher.registerHandlerFor(TestCaseFinished::class.java, testCaseFinishedEvents::add)
@@ -29,7 +32,7 @@ class LsdCucumberPlugin : ConcurrentEventListener {
 
     private fun handleTestStepStarted(testStepStarted: TestStepStarted) {
         val testStep = testStepStarted.testStep
-        if (testStep is PickleStepTestStep) {
+        if (splitByStep && testStep is PickleStepTestStep) {
             val step = testStep.step
             lsdContext.capture(Newpage(PageTitle(step.keyword + step.text)))
         }
