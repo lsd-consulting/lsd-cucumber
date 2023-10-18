@@ -6,8 +6,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    allow:
-      - dependency-name: "io.github.lsd-consulting:*"
     commit-message:
       prefix: "fix"
-    
+    groups:
+      lsd-dependencies:
+        patterns:
+          - "io.github.lsd-consulting:*"
+      other:
+        exclude-patterns:
+          - "io.github.lsd-consulting:*"
