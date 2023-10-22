@@ -6,9 +6,12 @@
 name: CI
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    types: [opened, edited, reopened]
+    branches:
+      - main
 jobs:
   build:
     runs-on: macos-latest
