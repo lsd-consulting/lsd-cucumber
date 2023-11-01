@@ -9,11 +9,26 @@ updates:
     commit-message:
       prefix: "fix"
     groups:
-      lsd-dependencies:
+      runtime-dependencies:
         patterns:
           - "io.github.lsd-consulting:*"
+          - "org.junit.jupiter:*"
+          - "com.j2html:j2html:*"
+          - "io.cucumber:cucumber-plugin:*"
+          - "org.jetbrains.kotlin.jvm:*"
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "chore"
+    groups:
       other-dependencies:
         patterns:
           - "*"
         exclude-patterns:
           - "io.github.lsd-consulting:*"
+          - "org.junit.jupiter:*"
+          - "com.j2html:j2html:*"
+          - "io.cucumber:cucumber-plugin:*"
+          - "org.jetbrains.kotlin.jvm:*"
