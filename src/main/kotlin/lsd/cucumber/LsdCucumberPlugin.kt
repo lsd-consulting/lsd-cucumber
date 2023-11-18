@@ -27,7 +27,7 @@ class LsdCucumberPlugin : ConcurrentEventListener {
         publisher.registerHandlerFor(TestCaseStarted::class.java, ::handleTestCaseStarted)
         publisher.registerHandlerFor(TestStepStarted::class.java, ::handleTestStepStarted)
         publisher.registerHandlerFor(TestCaseFinished::class.java, testCaseFinishedEvents::add)
-        publisher.registerHandlerFor(TestRunFinished::class.java, ::handleTestRunFinished)
+        publisher.registerHandlerFor(TestRunFinished::class.java) { handleTestRunFinished() }
     }
 
     private fun handleTestStepStarted(testStepStarted: TestStepStarted) {
@@ -101,7 +101,7 @@ class LsdCucumberPlugin : ConcurrentEventListener {
     private val isVeryFirstRun: Boolean
         get() = scenarioName == null
 
-    private fun handleTestRunFinished(event: TestRunFinished) {
+    private fun handleTestRunFinished() {
         featureName?.let { name ->
             if (name.isNotBlank()) {
                 finishProcessingCompletedScenario()
