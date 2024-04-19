@@ -34,7 +34,7 @@ dependencies {
     testImplementation 'com.approvaltests:approvaltests:23.1.0'
     testImplementation 'org.mockito:mockito-core:5.11.0'
     testImplementation 'io.cucumber:cucumber-java8:7.16.1'
-    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.16.1'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.17.0'
     testImplementation 'org.junit.platform:junit-platform-suite-engine:1.10.2'
 }
 
