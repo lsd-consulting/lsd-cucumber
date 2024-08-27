@@ -30,6 +30,8 @@ jobs:
         with:
           files: build/reports/jacoco/test/jacocoTestReport.xml
           verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   release:
     needs: build
     runs-on: ubuntu-latest
