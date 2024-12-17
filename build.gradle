@@ -25,8 +25,8 @@ kotlin {
 
 dependencies {
     api 'io.github.lsd-consulting:lsd-core:7.0.52'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
     implementation 'com.j2html:j2html:1.6.0'
     implementation 'io.cucumber:cucumber-plugin:7.20.1'
 
