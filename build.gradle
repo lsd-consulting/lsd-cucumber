@@ -28,7 +28,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api:5.12.1'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.12.1'
     implementation 'com.j2html:j2html:1.6.0'
-    implementation 'io.cucumber:cucumber-plugin:7.21.1'
+    implementation 'io.cucumber:cucumber-plugin:7.22.0'
 
     testImplementation 'org.assertj:assertj-core:3.27.3'
     testImplementation 'com.approvaltests:approvaltests:24.19.0'
