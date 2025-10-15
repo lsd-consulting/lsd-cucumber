@@ -80,6 +80,7 @@ publishing {
 
             from components.kotlin
             artifact sourcesJar
+            artifact javadocJar
             pom {
                 name = 'lsd-cucumber'
                 description = 'A library providing a Cucumber plugin for including Cucumber scenarios in the LSD reports.'
