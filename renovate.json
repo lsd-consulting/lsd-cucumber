@@ -9,7 +9,8 @@
   "packageRules": [
     {
       "description": "Test dependencies - does not trigger semantic releases",
-      "matchDepTypes": ["test", "lsdReportVerificationImplementation"],
+      "matchDepTypes": ["test"],
+      "matchDepNames": ["lsdReportVerificationImplementation"],
       "groupName": "testing-dependencies",
       "commitMessagePrefix": "test:",
       "semanticCommitType": "test",
