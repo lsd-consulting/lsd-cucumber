@@ -5,6 +5,7 @@
   "schedule": ["at any time"],
   "prHourlyLimit": 10,
   "prConcurrentLimit": 5,
+  "platformAutomerge": true,
   "packageRules": [
     {
       "description": "Test dependencies - does not trigger semantic releases",
@@ -12,7 +13,9 @@
       "groupName": "testing-dependencies",
       "commitMessagePrefix": "test:",
       "semanticCommitType": "test",
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
       "description": "LSD dependencies - production",
@@ -30,7 +33,9 @@
       "groupName": "cucumber-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
       "description": "Utility dependencies - production",
@@ -39,7 +44,9 @@
       "groupName": "utility-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
       "description": "Kotlin dependencies - production",
@@ -51,7 +58,9 @@
       "groupName": "kotlin-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
       "description": "GitHub Actions - no version impact",
