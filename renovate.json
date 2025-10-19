@@ -13,7 +13,6 @@
       "groupName": "testing-dependencies",
       "commitMessagePrefix": "test:",
       "semanticCommitType": "test",
-      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr"
     },
@@ -24,7 +23,6 @@
       "groupName": "lsd-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "description": "Cucumber dependencies - production",
@@ -33,7 +31,6 @@
       "groupName": "cucumber-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr"
     },
@@ -44,7 +41,6 @@
       "groupName": "utility-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr"
     },
@@ -58,7 +54,6 @@
       "groupName": "kotlin-dependencies",
       "commitMessagePrefix": "fix:",
       "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr"
     },
@@ -80,8 +75,12 @@
         "org.jetbrains.dokka:**"
       ],
       "commitMessagePrefix": "fix:",
-      "semanticCommitType": "fix",
-      "matchUpdateTypes": ["minor", "patch"]
+      "semanticCommitType": "fix"
+    },
+    {
+      "description": "Major version updates - require manual review",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ]
 }
