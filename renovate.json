@@ -15,7 +15,7 @@
       "semanticCommitType": "test",
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "branch"
     },
     {
       "description": "LSD dependencies - production",
@@ -35,7 +35,7 @@
       "semanticCommitType": "fix",
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "branch"
     },
     {
       "description": "Utility dependencies - production",
@@ -46,7 +46,7 @@
       "semanticCommitType": "fix",
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "branch"
     },
     {
       "description": "Kotlin dependencies - production",
@@ -60,7 +60,7 @@
       "semanticCommitType": "fix",
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "branch"
     },
     {
       "description": "GitHub Actions - no version impact",
