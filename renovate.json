@@ -34,21 +34,13 @@
       "groupName": "lsd dependencies"
     },
     {
-      "matchDepTypes": [
-        "testImplementation",
-        "testCompileOnly",
-        "testRuntimeOnly",
-        "testApi",
-        "lsdReportVerificationImplementation"
-      ],
-      "commitMessagePrefix": "test(deps): "
-    },
-    {
-      "matchDepTypes": [
-        "implementation",
-        "api",
-        "compileOnly",
-        "runtimeOnly"
+      "description": "Production dependencies - triggers semantic releases",
+      "matchPackagePatterns": [
+        "org.jetbrains.kotlin*",
+        "org.jetbrains.dokka*",
+        "io.cucumber:**",
+        "com.j2html:**",
+        "io.github.lsd-consulting:**"
       ],
       "commitMessagePrefix": "fix(deps): "
     },
