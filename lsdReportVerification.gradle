@@ -23,8 +23,8 @@ lsdReportVerification {
 }
 
 dependencies {
-    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-api:5.14.0'
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-engine:5.14.0'
     lsdReportVerificationImplementation 'org.assertj:assertj-core:3.27.6'
     lsdReportVerificationImplementation 'org.mockito:mockito-all:1.10.19'
     lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.17.0'
