@@ -151,5 +151,5 @@ Configure via `lsd.properties` on your classpath. See [lsd-core configuration](h
 ## Ecosystem
 
 - **[lsd-core](https://github.com/lsd-consulting/lsd-core)** - Core library for generating living sequence diagrams
-- **[lsd-junit5](https://github.com/lsd-consulting/lsd-junit5)** - JUnit 5 extension for LSD reports
+- **[lsd-junit-jupiter](https://github.com/lsd-consulting/lsd-junit-jupiter)** - JUnit Jupiter extension for LSD reports
 - **[lsd-interceptors](https://github.com/lsd-consulting/lsd-interceptors)** - HTTP/messaging interceptors for automatic capture
