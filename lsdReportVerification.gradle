@@ -28,6 +28,6 @@ dependencies {
     lsdReportVerificationImplementation 'org.junit.platform:junit-platform-suite-engine:6.0.1'
     lsdReportVerificationImplementation 'org.assertj:assertj-core:3.27.6'
     lsdReportVerificationImplementation 'org.mockito:mockito-all:1.10.19'
-    lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.56.0'
+    lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.57.0'
     lsdReportVerificationImplementation 'com.approvaltests:approvaltests:25.9.0'
 }
