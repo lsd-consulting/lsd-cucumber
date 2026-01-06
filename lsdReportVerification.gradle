@@ -23,9 +23,9 @@ lsdReportVerification {
 }
 
 dependencies {
-    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-api:6.0.1'
-    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-engine:6.0.1'
-    lsdReportVerificationImplementation 'org.junit.platform:junit-platform-suite-engine:6.0.1'
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-api:6.0.2'
+    lsdReportVerificationImplementation 'org.junit.jupiter:junit-jupiter-engine:6.0.2'
+    lsdReportVerificationImplementation 'org.junit.platform:junit-platform-suite-engine:6.0.2'
     lsdReportVerificationImplementation 'org.assertj:assertj-core:3.27.6'
     lsdReportVerificationImplementation 'org.mockito:mockito-all:1.10.19'
     lsdReportVerificationImplementation 'com.microsoft.playwright:playwright:1.57.0'
