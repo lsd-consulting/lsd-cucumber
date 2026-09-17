@@ -29,7 +29,7 @@ public class LsdReportPage {
     }
 
     public List<String> articleTitles() {
-        return page.locator("main > article > h2").allTextContents();
+        return page.locator("main details > summary > h2").allTextContents();
     }
 
     private void captureScreenshot(String fileName) {
